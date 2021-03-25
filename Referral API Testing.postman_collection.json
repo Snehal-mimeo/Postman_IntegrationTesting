@@ -1,0 +1,328 @@
+{
+	"info": {
+		"_postman_id": "6de47063-9902-4bab-be59-e5c59806e0e1",
+		"name": "Referral API Testing",
+		"description": "Referral API Testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Referral API- Valid Email address",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "api-version",
+						"value": "1.0",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"recipientEmail\": \"snehalkhopde02@gmail.com\",\n    \"advocateEmail\": \"snehalkhopde02+101@gmail.com\",\n    \"culture\": \"en-us\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev-photos-discounts-usea-app.azurewebsites.net/referrals",
+					"protocol": "https",
+					"host": [
+						"dev-photos-discounts-usea-app",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"referrals"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Referral API- Same Email address",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "api-version",
+						"type": "text",
+						"value": "1.0"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"recipientEmail\": \"sghorpade+1234@gmail.com\",\n    \"advocateEmail\": \"sghorpade+1234@gmail.com\",\n    \"culture\": \"\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev-photos-discounts-usea-app.azurewebsites.net/referrals",
+					"protocol": "https",
+					"host": [
+						"dev-photos-discounts-usea-app",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"referrals"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Referral API- Invalid Email address",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "api-version",
+						"type": "text",
+						"value": "1.0"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"recipientEmail\": \"snehalkhopde02\",\n    \"advocateEmail\": \"snehalkhopde02+101\",\n    \"culture\": \"en-us\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev-photos-discounts-usea-app.azurewebsites.net/referrals",
+					"protocol": "https",
+					"host": [
+						"dev-photos-discounts-usea-app",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"referrals"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Referral API- Mandatory Email address(Recipient)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "api-version",
+						"type": "text",
+						"value": "1.0"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"recipientEmail\": \"\",\n    \"advocateEmail\": \"snehalkhopde02+101@gmail.com\",\n    \"culture\": \"en-us\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev-photos-discounts-usea-app.azurewebsites.net/referrals",
+					"protocol": "https",
+					"host": [
+						"dev-photos-discounts-usea-app",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"referrals"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Referral API- Mandatory Email address(Advocate)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "api-version",
+						"type": "text",
+						"value": "1.0"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"recipientEmail\": \"snehalkhopde02+10@gmail.com\",\n    \"advocateEmail\": \"\",\n    \"culture\": \"en-us\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev-photos-discounts-usea-app.azurewebsites.net/referrals",
+					"protocol": "https",
+					"host": [
+						"dev-photos-discounts-usea-app",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"referrals"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Referral API- Missing culture",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "api-version",
+						"type": "text",
+						"value": "1.0"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"recipientEmail\": \"sghorpade@mimeo.com\",\n    \"advocateEmail\": \"sghorpade+111121@mimeo.com\",\n    \"culture\": \"\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev-photos-discounts-usea-app.azurewebsites.net/referrals",
+					"protocol": "https",
+					"host": [
+						"dev-photos-discounts-usea-app",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"referrals"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
